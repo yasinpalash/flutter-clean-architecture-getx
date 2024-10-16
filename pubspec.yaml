@@ -37,6 +37,7 @@ dependencies:
   logger: ^2.0.1
   url_launcher: ^6.1.12
   flutter_screenutil: ^5.9.3
+  flutter_easyloading: ^3.0.5
   # Icons
   iconsax: ^0.0.8
   cupertino_icons: ^1.0.8
