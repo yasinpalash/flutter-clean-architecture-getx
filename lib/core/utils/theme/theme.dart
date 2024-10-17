@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:project_structure_temp/utils/theme/custom_themes/app_bar_theme.dart';
-import 'package:project_structure_temp/utils/theme/custom_themes/elevated_button_theme.dart';
-import 'package:project_structure_temp/utils/theme/custom_themes/text_field_theme.dart';
-import 'package:project_structure_temp/utils/theme/custom_themes/text_theme.dart';
+
+import 'custom_themes/app_bar_theme.dart';
+import 'custom_themes/elevated_button_theme.dart';
+import 'custom_themes/text_field_theme.dart';
+import 'custom_themes/text_theme.dart';
+
 
 class AppTheme {
   AppTheme._();

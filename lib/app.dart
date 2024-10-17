@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:project_structure_temp/utils/theme/theme.dart';
+import 'package:project_structure_temp/core/bindings/controller_binder.dart';
+import 'package:project_structure_temp/routes/app_routes.dart';
+import 'core/utils/theme/theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,6 +18,10 @@ class MyApp extends StatelessWidget {
 // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_, child) {
         return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: AppRoute.getLoginScreen(),
+          getPages: AppRoute.routes,
+          initialBinding: ControllerBinder(),
           themeMode: ThemeMode.system,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
