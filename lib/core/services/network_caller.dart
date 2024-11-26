@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 import '../models/response_data.dart';
@@ -8,37 +9,22 @@ import '../models/response_data.dart';
 class NetworkCaller {
   final int timeoutDuration = 10;
 
-  // GET method
-  Future<ResponseData> getRequest(String url, {String? token}) async {
-    log('GET Request: $url');
-    log('GET Token: $token');
+
+
+  // Common headers (e.g., for authentication)
+  Map<String, String> _getHeaders() => {
+    'Content-Type': 'application/json',
+    // Add 'Authorization': 'Bearer <token>' if necessary
+  };
+
+  Future<ResponseData> getRequest(String endpoint) async {
+
+    log('GET Request: $endpoint');
     try {
       final Response response = await get(
-        Uri.parse(url),
-        headers: {
-          'Authorization': token.toString(),
-          'Content-type': 'application/json',
-        },
-      ).timeout(
-        Duration(seconds: timeoutDuration),
-      );
-
-      return _handleResponse(response);
-    } catch (e) {
-      return _handleError(e);
-    }
-  }
-
-  // POST method
-  Future<ResponseData> postRequest(String url,
-      {Map<String, String>? body, String? token}) async {
-    log('POST Request: $url');
-    log('Request Body: ${jsonEncode(body)}');
-
-    try {
-      final Response response = await post(Uri.parse(url),
-          headers: {'Content-type': 'application/json'},
-          body: jsonEncode(body))
+        Uri.parse(endpoint),
+        headers: _getHeaders(),
+      )
           .timeout(Duration(seconds: timeoutDuration));
       return _handleResponse(response);
     } catch (e) {
@@ -46,88 +32,158 @@ class NetworkCaller {
     }
   }
 
-  // Handle response
-  ResponseData _handleResponse(Response response) {
+  Future<ResponseData> postRequest(String endpoint, {Map<String, dynamic>? body}) async {
+    log('POST Request: $endpoint');
+    log('Request Body: ${jsonEncode(body)}');
+
+    try {
+      final Response response = await
+    post(
+        Uri.parse(endpoint),
+        headers: _getHeaders(),
+        body: jsonEncode(body),
+      )
+          .timeout(Duration(seconds: timeoutDuration));
+      return _handleResponse(response);
+    } catch (e) {
+      return _handleError(e);
+    }
+  }
+
+  Future<ResponseData> putRequest(String endpoint, {Map<String, dynamic>? body}) async {
+
+    log('PUT Request: $endpoint');
+    log('Request Body: ${jsonEncode(body)}');
+
+    try {
+      final Response response = await
+          put(
+        Uri.parse(endpoint),
+        headers: _getHeaders(),
+        body: jsonEncode(body),
+      )
+          .timeout(Duration(seconds: timeoutDuration));
+      return _handleResponse(response);
+    } catch (e) {
+      return _handleError(e);
+    }
+  }
+
+  Future<ResponseData> deleteRequest(String endpoint) async {
+
+    log('DELETE Request: $endpoint');
+    try {
+      final Response response = await delete(
+        Uri.parse(endpoint),
+        headers: _getHeaders(),
+      )
+          .timeout(Duration(seconds: timeoutDuration));
+      return _handleResponse(response);
+    } catch (e) {
+      return _handleError(e);
+    }
+  }
+
+  // Handle the response from the server
+  ResponseData _handleResponse(http.Response response) {
     log('Response Status: ${response.statusCode}');
     log('Response Body: ${response.body}');
 
-    final decodedResponse = jsonDecode(response.body);
-
-    if (response.statusCode == 200) {
-      if (decodedResponse['success'] == true) {
-        return ResponseData(
-          isSuccess: true,
-          statusCode: response.statusCode,
-          responseData: decodedResponse,
-          errorMessage: '',
-        );
-      } else {
-        return ResponseData(
-          isSuccess: false,
-          statusCode: response.statusCode,
-          responseData: decodedResponse,
-          errorMessage: decodedResponse['message'] ?? 'Unknown error occurred',
-        );
+    try {
+      final decodedResponse = jsonDecode(response.body);
+      switch (response.statusCode) {
+        case 200:
+        case 201:
+          return ResponseData(
+            isSuccess: true,
+            statusCode: response.statusCode,
+            responseData: decodedResponse,
+          );
+        case 204:
+          return ResponseData(
+            isSuccess: true,
+            statusCode: response.statusCode,
+            responseData: null,
+          );
+        case 400:
+          return ResponseData(
+            isSuccess: false,
+            statusCode: response.statusCode,
+            errorMessage: decodedResponse['error'] ?? 'There was an issue with your request. Please try again.',
+            responseData: null,
+          );
+        case 401:
+          // await AuthController.clearAuthData();
+          // AuthController.goToLogin();
+          return ResponseData(
+            isSuccess: false,
+            statusCode: response.statusCode,
+            errorMessage: 'You are not authorized. Please log in to continue.',
+            responseData: null,
+          );
+        case 403:
+          return ResponseData(
+            isSuccess: false,
+            statusCode: response.statusCode,
+            errorMessage: 'You do not have permission to access this resource.',
+            responseData: null,
+          );
+        case 404:
+          return ResponseData(
+            isSuccess: false,
+            statusCode: response.statusCode,
+            errorMessage: 'The resource you are looking for was not found.',
+            responseData: null,
+          );
+        case 500:
+          return ResponseData(
+            isSuccess: false,
+            statusCode: response.statusCode,
+            errorMessage: 'Internal server error. Please try again later.',
+            responseData: null,
+          );
+        default:
+          return ResponseData(
+            isSuccess: false,
+            statusCode: response.statusCode,
+            errorMessage: decodedResponse['error'] ?? 'Something went wrong. Please try again.',
+            responseData: null,
+          );
       }
-    } else if (response.statusCode == 400) {
+    } catch (e) {
       return ResponseData(
         isSuccess: false,
         statusCode: response.statusCode,
-        responseData: decodedResponse,
-        errorMessage: _extractErrorMessages(decodedResponse['errorSources']),
-      );
-    } else if (response.statusCode == 500) {
-      return ResponseData(
-        isSuccess: false,
-        statusCode: response.statusCode,
-        responseData: '',
-        errorMessage:
-        decodedResponse['message'] ?? 'An unexpected error occurred!',
-      );
-    } else {
-      return ResponseData(
-        isSuccess: false,
-        statusCode: response.statusCode,
-        responseData: decodedResponse,
-        errorMessage: decodedResponse['message'] ?? 'An unknown error occurred',
+        errorMessage: 'Failed to process the response. Please try again later.',
+        responseData: null,
       );
     }
   }
 
-  // Extract error messages for status 400
-  String _extractErrorMessages(dynamic errorSources) {
-    if (errorSources is List) {
-      return errorSources
-          .map((error) => error['message'] ?? 'Unknown error')
-          .join(', ');
-    }
-    return 'Validation error';
-  }
-
-  // Handle errors
+  // Handle errors during the request process
   ResponseData _handleError(dynamic error) {
     log('Request Error: $error');
 
-    if (error is ClientException) {
-      return ResponseData(
-        isSuccess: false,
-        statusCode: 500,
-        responseData: '',
-        errorMessage: 'Network error occurred. Please check your connection.',
-      );
-    } else if (error is TimeoutException) {
+    if (error is TimeoutException) {
       return ResponseData(
         isSuccess: false,
         statusCode: 408,
-        responseData: '',
-        errorMessage: 'Request timeout. Please try again later.',
+        errorMessage: 'Request timed out. Please check your internet connection and try again.',
+        responseData: null,
+      );
+    } else if (error is http.ClientException) {
+      return ResponseData(
+        isSuccess: false,
+        statusCode: 500,
+        errorMessage: 'Network error occurred. Please check your connection and try again.',
+        responseData: null,
       );
     } else {
       return ResponseData(
         isSuccess: false,
         statusCode: 500,
-        responseData: '',
-        errorMessage: 'Unexpected error occurred.',
+        errorMessage: 'Unexpected error occurred. Please try again later.',
+        responseData: null,
       );
     }
   }
