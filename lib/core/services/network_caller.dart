@@ -98,12 +98,14 @@ class NetworkCaller {
             isSuccess: true,
             statusCode: response.statusCode,
             responseData: decodedResponse,
+            errorMessage: ''
           );
         case 204:
           return ResponseData(
             isSuccess: true,
             statusCode: response.statusCode,
             responseData: null,
+            errorMessage: ''
           );
         case 400:
           return ResponseData(

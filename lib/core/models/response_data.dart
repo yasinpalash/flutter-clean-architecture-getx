@@ -10,3 +10,4 @@ class ResponseData {
         required this.errorMessage ,
         required this.responseData});
 }
+
