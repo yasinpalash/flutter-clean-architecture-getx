@@ -3,81 +3,78 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-
+import 'package:townzz/core/services/storage_service.dart';
 import '../models/response_data.dart';
 
 class NetworkCaller {
   final int timeoutDuration = 10;
 
-
-
-  // Common headers (e.g., for authentication)
-  Map<String, String> _getHeaders() => {
-    'Content-Type': 'application/json',
-    // Add 'Authorization': 'Bearer <token>' if necessary
-  };
-
-  Future<ResponseData> getRequest(String endpoint) async {
-
+  Future<ResponseData> getRequest(String endpoint, {String? token}) async {
     log('GET Request: $endpoint');
     try {
       final Response response = await get(
         Uri.parse(endpoint),
-        headers: _getHeaders(),
-      )
-          .timeout(Duration(seconds: timeoutDuration));
+        headers: {
+          'Authorization': token ?? '',
+          'Content-type': 'application/json',
+        },
+      ).timeout(Duration(seconds: timeoutDuration));
       return _handleResponse(response);
     } catch (e) {
       return _handleError(e);
     }
   }
 
-  Future<ResponseData> postRequest(String endpoint, {Map<String, dynamic>? body}) async {
+  Future<ResponseData> postRequest(String endpoint,
+      {Map<String, dynamic>? body, String? token}) async {
     log('POST Request: $endpoint');
     log('Request Body: ${jsonEncode(body)}');
 
     try {
-      final Response response = await
-    post(
+      final Response response = await post(
         Uri.parse(endpoint),
-        headers: _getHeaders(),
+        headers: {
+          'Authorization': token ?? '',
+          'Content-type': 'application/json',
+        },
         body: jsonEncode(body),
-      )
-          .timeout(Duration(seconds: timeoutDuration));
+      ).timeout(Duration(seconds: timeoutDuration));
       return _handleResponse(response);
     } catch (e) {
       return _handleError(e);
     }
   }
 
-  Future<ResponseData> putRequest(String endpoint, {Map<String, dynamic>? body}) async {
-
+  Future<ResponseData> putRequest(String endpoint,
+      {Map<String, dynamic>? body, String? token}) async {
     log('PUT Request: $endpoint');
     log('Request Body: ${jsonEncode(body)}');
 
     try {
-      final Response response = await
-          put(
+      final Response response = await put(
         Uri.parse(endpoint),
-        headers: _getHeaders(),
+        headers: {
+          'Authorization': token ?? '',
+          'Content-type': 'application/json',
+        },
         body: jsonEncode(body),
-      )
-          .timeout(Duration(seconds: timeoutDuration));
+      ).timeout(Duration(seconds: timeoutDuration));
       return _handleResponse(response);
     } catch (e) {
       return _handleError(e);
     }
   }
 
-  Future<ResponseData> deleteRequest(String endpoint) async {
-
+  Future<ResponseData> deleteRequest(String endpoint, String? token) async {
     log('DELETE Request: $endpoint');
     try {
       final Response response = await delete(
         Uri.parse(endpoint),
-        headers: _getHeaders(),
-      )
-          .timeout(Duration(seconds: timeoutDuration));
+        headers: {
+          'Authorization': token ?? '',
+          'Content-type': 'application/json',
+        },
+      ).timeout(Duration(seconds: timeoutDuration));
       return _handleResponse(response);
     } catch (e) {
       return _handleError(e);
@@ -85,7 +82,7 @@ class NetworkCaller {
   }
 
   // Handle the response from the server
-  ResponseData _handleResponse(http.Response response) {
+  Future<ResponseData> _handleResponse(http.Response response) async {
     log('Response Status: ${response.statusCode}');
     log('Response Body: ${response.body}');
 
@@ -98,25 +95,25 @@ class NetworkCaller {
             isSuccess: true,
             statusCode: response.statusCode,
             responseData: decodedResponse,
-            errorMessage: ''
+            errorMessage: '',
           );
         case 204:
           return ResponseData(
             isSuccess: true,
             statusCode: response.statusCode,
             responseData: null,
-            errorMessage: ''
+            errorMessage: '',
           );
         case 400:
           return ResponseData(
             isSuccess: false,
             statusCode: response.statusCode,
-            errorMessage: decodedResponse['error'] ?? 'There was an issue with your request. Please try again.',
+            errorMessage: decodedResponse['error'] ??
+                'There was an issue with your request. Please try again.',
             responseData: null,
           );
         case 401:
-          // await AuthController.clearAuthData();
-          // AuthController.goToLogin();
+          await StorageService.logoutUser();
           return ResponseData(
             isSuccess: false,
             statusCode: response.statusCode,
@@ -148,7 +145,8 @@ class NetworkCaller {
           return ResponseData(
             isSuccess: false,
             statusCode: response.statusCode,
-            errorMessage: decodedResponse['error'] ?? 'Something went wrong. Please try again.',
+            errorMessage: decodedResponse['error'] ??
+                'Something went wrong. Please try again.',
             responseData: null,
           );
       }
@@ -170,14 +168,16 @@ class NetworkCaller {
       return ResponseData(
         isSuccess: false,
         statusCode: 408,
-        errorMessage: 'Request timed out. Please check your internet connection and try again.',
+        errorMessage:
+            'Request timed out. Please check your internet connection and try again.',
         responseData: null,
       );
     } else if (error is http.ClientException) {
       return ResponseData(
         isSuccess: false,
         statusCode: 500,
-        errorMessage: 'Network error occurred. Please check your connection and try again.',
+        errorMessage:
+            'Network error occurred. Please check your connection and try again.',
         responseData: null,
       );
     } else {
