@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:townzz/core/services/storage_service.dart';
+import 'package:project_structure_temp/core/services/Auth_service.dart';
 import '../models/response_data.dart';
 
 class NetworkCaller {
@@ -113,7 +113,7 @@ class NetworkCaller {
             responseData: null,
           );
         case 401:
-          await StorageService.logoutUser();
+          await AuthService.logoutUser();
           return ResponseData(
             isSuccess: false,
             statusCode: response.statusCode,
