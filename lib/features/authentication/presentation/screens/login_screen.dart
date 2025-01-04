@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:project_structure_temp/core/common/styles/get_text_style.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: Center(
-        child: Text("Log in"),
+        child: Text("Log in",style: getTextStyle(fontSize: 20),),
       ),
     );
   }
