@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:project_structure_temp/core/utils/constants/app_colors.dart';
 import 'custom_themes/app_bar_theme.dart';
 import 'custom_themes/elevated_button_theme.dart';
@@ -11,7 +12,7 @@ class AppTheme {
 
   static ThemeData lightTheme = ThemeData(
       useMaterial3: true,
-      // fontFamily: 'Poppins'
+      fontFamily: GoogleFonts.smoochSans().fontFamily,
       brightness: Brightness.light,
       primaryColor: AppColors.primary,
       scaffoldBackgroundColor: Colors.white,
@@ -22,7 +23,7 @@ class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
       useMaterial3: true,
-      // fontFamily: 'Poppins'
+      fontFamily: GoogleFonts.smoochSans().fontFamily,
       brightness: Brightness.dark,
       primaryColor: AppColors.primary,
       scaffoldBackgroundColor: Colors.black,

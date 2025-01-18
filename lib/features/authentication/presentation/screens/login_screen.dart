@@ -8,7 +8,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
+        title: Text("Login",style: TextStyle(),),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width, // Full width of the screen
@@ -16,8 +16,8 @@ class LoginScreen extends StatelessWidget {
         color: Colors.green, // Optional background color
         child: Center(
           child: Text(
-            "Log in",
-            style: getTextStyle(fontSize: 20),
+            "this is my book ",
+            style: TextStyle(fontSize: 20),
           ),
         ),
       ),
