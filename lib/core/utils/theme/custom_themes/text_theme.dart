@@ -1,158 +1,159 @@
 import 'package:flutter/material.dart';
+import 'package:project_structure_temp/core/common/styles/get_text_style.dart';
 
 class AppTextTheme {
   AppTextTheme._();
 
-  static const TextTheme lightTextTheme = TextTheme(
-    displayLarge: TextStyle(
+  static TextTheme lightTextTheme = TextTheme(
+    displayLarge: getTextStyle(
       fontSize: 57.0,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
-    displayMedium: TextStyle(
+    displayMedium: getTextStyle(
       fontSize: 45.0,
       fontWeight: FontWeight.w600,
       color: Colors.black87,
     ),
-    displaySmall: TextStyle(
+    displaySmall: getTextStyle(
       fontSize: 36.0,
       fontWeight: FontWeight.w500,
       color: Colors.black87,
     ),
-    headlineLarge: TextStyle(
+    headlineLarge: getTextStyle(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
-    headlineMedium: TextStyle(
+    headlineMedium: getTextStyle(
       fontSize: 28.0,
       fontWeight: FontWeight.w600,
       color: Colors.black87,
     ),
-    headlineSmall: TextStyle(
+    headlineSmall: getTextStyle(
       fontSize: 24.0,
       fontWeight: FontWeight.w500,
       color: Colors.black87,
     ),
-    titleLarge: TextStyle(
+    titleLarge: getTextStyle(
       fontSize: 22.0,
       fontWeight: FontWeight.w600,
       color: Colors.black87,
     ),
-    titleMedium: TextStyle(
+    titleMedium: getTextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
       color: Colors.black87,
     ),
-    titleSmall: TextStyle(
+    titleSmall: getTextStyle(
       fontSize: 14.0,
       fontWeight: FontWeight.w500,
       color: Colors.black87,
     ),
-    bodyLarge: TextStyle(
+    bodyLarge: getTextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.normal,
       color: Colors.black87,
     ),
-    bodyMedium: TextStyle(
+    bodyMedium: getTextStyle(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
       color: Colors.black87,
     ),
-    bodySmall: TextStyle(
+    bodySmall: getTextStyle(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
       color: Colors.black54,
     ),
-    labelLarge: TextStyle(
+    labelLarge: getTextStyle(
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
-    labelMedium: TextStyle(
+    labelMedium: getTextStyle(
       fontSize: 12.0,
       fontWeight: FontWeight.w500,
       color: Colors.black54,
     ),
-    labelSmall: TextStyle(
+    labelSmall: getTextStyle(
       fontSize: 11.0,
       fontWeight: FontWeight.w500,
       color: Colors.black45,
     ),
   );
 
-  static const TextTheme darkTextTheme = TextTheme(
-    displayLarge: TextStyle(
+  static TextTheme darkTextTheme = TextTheme(
+    displayLarge: getTextStyle(
       fontSize: 57.0,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
-    displayMedium: TextStyle(
+    displayMedium: getTextStyle(
       fontSize: 45.0,
       fontWeight: FontWeight.w600,
       color: Colors.white70,
     ),
-    displaySmall: TextStyle(
+    displaySmall: getTextStyle(
       fontSize: 36.0,
       fontWeight: FontWeight.w500,
       color: Colors.white70,
     ),
-    headlineLarge: TextStyle(
+    headlineLarge: getTextStyle(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
-    headlineMedium: TextStyle(
+    headlineMedium: getTextStyle(
       fontSize: 28.0,
       fontWeight: FontWeight.w600,
       color: Colors.white70,
     ),
-    headlineSmall: TextStyle(
+    headlineSmall: getTextStyle(
       fontSize: 24.0,
       fontWeight: FontWeight.w500,
       color: Colors.white70,
     ),
-    titleLarge: TextStyle(
+    titleLarge: getTextStyle(
       fontSize: 22.0,
       fontWeight: FontWeight.w600,
       color: Colors.white70,
     ),
-    titleMedium: TextStyle(
+    titleMedium: getTextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
       color: Colors.white70,
     ),
-    titleSmall: TextStyle(
+    titleSmall: getTextStyle(
       fontSize: 14.0,
       fontWeight: FontWeight.w500,
       color: Colors.white70,
     ),
-    bodyLarge: TextStyle(
+    bodyLarge: getTextStyle(
       fontSize: 16.0,
       fontWeight: FontWeight.normal,
       color: Colors.white70,
     ),
-    bodyMedium: TextStyle(
+    bodyMedium: getTextStyle(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
       color: Colors.white60,
     ),
-    bodySmall: TextStyle(
+    bodySmall: getTextStyle(
       fontSize: 12.0,
       fontWeight: FontWeight.normal,
       color: Colors.white54,
     ),
-    labelLarge: TextStyle(
+    labelLarge: getTextStyle(
       fontSize: 14.0,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
-    labelMedium: TextStyle(
+    labelMedium: getTextStyle(
       fontSize: 12.0,
       fontWeight: FontWeight.w500,
       color: Colors.white60,
     ),
-    labelSmall: TextStyle(
+    labelSmall: getTextStyle(
       fontSize: 11.0,
       fontWeight: FontWeight.w500,
       color: Colors.white54,
