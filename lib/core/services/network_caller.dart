@@ -4,18 +4,19 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:project_structure_temp/core/services/Auth_service.dart';
+import 'package:project_structure_temp/core/utils/logging/logger.dart';
 import '../models/response_data.dart';
 
 class NetworkCaller {
   final int timeoutDuration = 10;
 
   Future<ResponseData> getRequest(String endpoint, {String? token}) async {
-    log('GET Request: $endpoint');
+    AppLoggerHelper.info('GET Request: $endpoint');
     try {
       final Response response = await get(
         Uri.parse(endpoint),
         headers: {
-          'Authorization': token ?? '',
+          'Authorization': token ?? AuthService.token.toString(),
           'Content-type': 'application/json',
         },
       ).timeout(Duration(seconds: timeoutDuration));
@@ -27,14 +28,14 @@ class NetworkCaller {
 
   Future<ResponseData> postRequest(String endpoint,
       {Map<String, dynamic>? body, String? token}) async {
-    log('POST Request: $endpoint');
-    log('Request Body: ${jsonEncode(body)}');
+    AppLoggerHelper.info('POST Request: $endpoint');
+    AppLoggerHelper.info('Request Body: ${jsonEncode(body)}');
 
     try {
       final Response response = await post(
         Uri.parse(endpoint),
         headers: {
-          'Authorization': token ?? '',
+          'Authorization': token ?? AuthService.token.toString(),
           'Content-type': 'application/json',
         },
         body: jsonEncode(body),
@@ -47,14 +48,14 @@ class NetworkCaller {
 
   Future<ResponseData> putRequest(String endpoint,
       {Map<String, dynamic>? body, String? token}) async {
-    log('PUT Request: $endpoint');
-    log('Request Body: ${jsonEncode(body)}');
+    AppLoggerHelper.info('PUT Request: $endpoint');
+    AppLoggerHelper.info('Request Body: ${jsonEncode(body)}');
 
     try {
       final Response response = await put(
         Uri.parse(endpoint),
         headers: {
-          'Authorization': token ?? '',
+          'Authorization': token ?? AuthService.token.toString(),
           'Content-type': 'application/json',
         },
         body: jsonEncode(body),
@@ -66,12 +67,12 @@ class NetworkCaller {
   }
 
   Future<ResponseData> deleteRequest(String endpoint, String? token) async {
-    log('DELETE Request: $endpoint');
+    AppLoggerHelper.info('DELETE Request: $endpoint');
     try {
       final Response response = await delete(
         Uri.parse(endpoint),
         headers: {
-          'Authorization': token ?? '',
+          'Authorization': token ?? AuthService.token.toString(),
           'Content-type': 'application/json',
         },
       ).timeout(Duration(seconds: timeoutDuration));
@@ -83,8 +84,8 @@ class NetworkCaller {
 
   // Handle the response from the server
   Future<ResponseData> _handleResponse(http.Response response) async {
-    log('Response Status: ${response.statusCode}');
-    log('Response Body: ${response.body}');
+    AppLoggerHelper.info('Response Status: ${response.statusCode}');
+    AppLoggerHelper.info('Response Body: ${response.body}');
 
     try {
       final decodedResponse = jsonDecode(response.body);
