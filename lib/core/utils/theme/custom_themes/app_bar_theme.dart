@@ -1,35 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:project_structure_temp/core/utils/constants/app_colors.dart';
 
 class AppBarThemeData {
   AppBarThemeData._();
 
-  static  AppBarTheme lightAppBarTheme = const AppBarTheme(
-    elevation: 0,
+  static AppBarTheme _baseAppBarTheme({
+    required Color backgroundColor,
+    required Color iconColor,
+    required Color titleColor,
+    required Color surfaceTintColor,
+    required double elevation,
+  }) {
+    return AppBarTheme(
+      foregroundColor: Colors.transparent,
+      surfaceTintColor: surfaceTintColor,
+      elevation: elevation,
+      backgroundColor: backgroundColor,
+      iconTheme: IconThemeData(color: iconColor),
+      titleTextStyle: TextStyle(
+        color: titleColor,
+        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+      ),
+      actionsIconTheme: IconThemeData(color: iconColor),
+      centerTitle: true,
+      // systemOverlayStyle: SystemUiOverlayStyle.light,
+    );
+  }
+
+  static final AppBarTheme lightAppBarTheme = _baseAppBarTheme(
     backgroundColor: Colors.white,
-    iconTheme: IconThemeData(color: Colors.black),
-    titleTextStyle: TextStyle(
-      color: Colors.black,
-      fontSize: 20.0,
-      fontWeight: FontWeight.bold,
-    ),
-    actionsIconTheme: IconThemeData(color: Colors.black),
-    centerTitle: true,
-    // systemOverlayStyle: SystemUiOverlayStyle.light,
+    iconColor: Colors.black,
+    titleColor: Colors.black,
+    surfaceTintColor: AppColors.primary,
+    elevation: 3,
   );
 
-  static final AppBarTheme darkAppBarTheme = AppBarTheme(
-    foregroundColor: Colors.transparent,
+  static final AppBarTheme darkAppBarTheme = _baseAppBarTheme(
+    backgroundColor: Colors.grey[900]!,
+    iconColor: Colors.white,
+    titleColor: Colors.white,
     surfaceTintColor: Colors.transparent,
     elevation: 0,
-    backgroundColor: Colors.grey[900],
-    iconTheme: const IconThemeData(color: Colors.white),
-    titleTextStyle:  const TextStyle(
-      color: Colors.white,
-      fontSize: 20.0,
-      fontWeight: FontWeight.bold,
-    ),
-    actionsIconTheme: const IconThemeData(color: Colors.white),
-    centerTitle: true,
-    // systemOverlayStyle: SystemUiOverlayStyle.light,
   );
 }

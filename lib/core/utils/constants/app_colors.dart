@@ -14,7 +14,7 @@ class AppColors {
     begin: Alignment(0.0, 0.0),
     end: Alignment(0.707, -0.707),
     colors: [
-      Color(0xfffff9a9e),
+      Color(0xfffffa9e),
       Color(0xFFFAD0C4),
       Color(0xFFFAD0C4),
     ],

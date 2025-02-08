@@ -3,89 +3,77 @@ import 'package:flutter/material.dart';
 class AppTextFormFieldTheme {
   AppTextFormFieldTheme._();
 
+  static InputDecorationTheme _baseInputDecorationTheme({
+    required Color labelColor,
+    required Color hintColor,
+    required Color errorColor,
+    required Color focusedErrorColor,
+    required Color prefixIconColor,
+    required Color suffixIconColor,
+    required Color borderColor,
+    required Color enabledBorderColor,
+    required Color focusedBorderColor,
+    required Color errorBorderColor,
+    required Color focusedErrorBorderColor,
+  }) {
+    return InputDecorationTheme(
+      errorMaxLines: 3,
+      prefixIconColor: prefixIconColor,
+      suffixIconColor: suffixIconColor,
+      labelStyle: TextStyle(fontSize: 14, color: labelColor),
+      hintStyle: TextStyle(fontSize: 14, color: hintColor),
+      errorStyle: TextStyle(fontSize: 12, color: errorColor),
+      floatingLabelStyle: TextStyle(color: labelColor.withValues(alpha: 0.8)),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: borderColor),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: enabledBorderColor),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: focusedBorderColor),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: errorBorderColor),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: focusedErrorBorderColor),
+      ),
+    );
+  }
+
   static final InputDecorationTheme lightInputDecorationTheme =
-      InputDecorationTheme(
-    errorMaxLines: 3,
+      _baseInputDecorationTheme(
+    labelColor: Colors.black,
+    hintColor: Colors.black,
+    errorColor: Colors.red,
+    focusedErrorColor: Colors.orange,
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,
-    labelStyle: const TextStyle(
-      fontSize: 14,
-      color: Colors.black,
-    ),
-    hintStyle: const TextStyle(
-      fontSize: 14,
-      color: Colors.black,
-    ),
-    errorStyle: const TextStyle(
-      fontSize: 12,
-      color: Colors.red,
-    ),
-    floatingLabelStyle: TextStyle(
-      color: Colors.black.withOpacity(0.8),
-    ),
-    border: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(color: Colors.grey),
-    ),
-    enabledBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(color: Colors.grey),
-    ),
-    focusedBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(
-          color: Colors.black), // You can replace with a specific color
-    ),
-    errorBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(color: Colors.red),
-    ),
-    focusedErrorBorder: const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(color: Colors.orange),
-    ),
+    borderColor: Colors.grey,
+    enabledBorderColor: Colors.grey,
+    focusedBorderColor: Colors.black,
+    errorBorderColor: Colors.red,
+    focusedErrorBorderColor: Colors.orange,
   );
 
-  static const InputDecorationTheme darkInputDecorationTheme =
-      InputDecorationTheme(
-    errorMaxLines: 3,
+  static final InputDecorationTheme darkInputDecorationTheme =
+      _baseInputDecorationTheme(
+    labelColor: Colors.white,
+    hintColor: Colors.white70,
+    errorColor: Colors.redAccent,
+    focusedErrorColor: Colors.orangeAccent,
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,
-    labelStyle: TextStyle(
-      fontSize: 14,
-      color: Colors.white,
-    ),
-    hintStyle: TextStyle(
-      fontSize: 14,
-      color: Colors.white70,
-    ),
-    errorStyle: TextStyle(
-      fontSize: 12,
-      color: Colors.redAccent,
-    ),
-    floatingLabelStyle: TextStyle(
-      color: Colors.white70,
-    ),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(color: Colors.grey),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(color: Colors.grey),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(
-          color: Colors.white), // You can replace with a specific color
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(color: Colors.redAccent),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(14)),
-      borderSide: BorderSide(color: Colors.orangeAccent),
-    ),
+    borderColor: Colors.grey,
+    enabledBorderColor: Colors.grey,
+    focusedBorderColor: Colors.white,
+    errorBorderColor: Colors.redAccent,
+    focusedErrorBorderColor: Colors.orangeAccent,
   );
 }

@@ -3,84 +3,47 @@ import 'package:flutter/material.dart';
 class AppElevatedButtonTheme {
   AppElevatedButtonTheme._();
 
-  static final ElevatedButtonThemeData lightElevatedButtonTheme =
-      ElevatedButtonThemeData(
-    style: ButtonStyle(
-      elevation: WidgetStateProperty.all(0),
-      foregroundColor: WidgetStateProperty.resolveWith<Color>(
-        (states) {
-          if (states.contains(WidgetState.disabled)) {
-            return Colors.grey; // Disabled text color
-          }
-          return Colors.white; // Default text color
-        },
-      ),
-      backgroundColor: WidgetStateProperty.resolveWith<Color>(
-        (states) {
-          if (states.contains(WidgetState.disabled)) {
-            return Colors.grey.shade300; // Disabled background color
-          }
-          return Colors.blue; // Default background color
-        },
-      ),
-      side: WidgetStateProperty.all(
-        const BorderSide(color: Colors.blue),
-      ),
-      padding: WidgetStateProperty.all(
-        const EdgeInsets.symmetric(vertical: 18),
-      ),
-      textStyle: WidgetStateProperty.all(
-        const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
+  static ElevatedButtonThemeData _baseTheme({
+    required Color defaultTextColor,
+    required Color disabledTextColor,
+    required Color defaultBackgroundColor,
+    required Color disabledBackgroundColor,
+    required Color borderColor,
+  }) {
+    return ElevatedButtonThemeData(
+      style: ButtonStyle(
+        elevation: const WidgetStatePropertyAll(0),
+        foregroundColor: WidgetStateProperty.resolveWith<Color>(
+          (states) => states.contains(WidgetState.disabled) ? disabledTextColor : defaultTextColor,
+        ),
+        backgroundColor: WidgetStateProperty.resolveWith<Color>(
+          (states) => states.contains(WidgetState.disabled) ? disabledBackgroundColor : defaultBackgroundColor,
+        ),
+        side: WidgetStateProperty.all(BorderSide(color: borderColor)),
+        padding: const WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 18)),
+        textStyle: const WidgetStatePropertyAll(
+          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        ),
+        shape: WidgetStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
       ),
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-    ),
+    );
+  }
+
+  static final ElevatedButtonThemeData lightElevatedButtonTheme = _baseTheme(
+    defaultTextColor: Colors.white,
+    disabledTextColor: Colors.grey,
+    defaultBackgroundColor: Colors.blue,
+    disabledBackgroundColor: Colors.grey.shade300,
+    borderColor: Colors.blue,
   );
 
-  static final ElevatedButtonThemeData darkElevatedButtonTheme =
-      ElevatedButtonThemeData(
-    style: ButtonStyle(
-      elevation: WidgetStateProperty.all(0),
-      foregroundColor: WidgetStateProperty.resolveWith<Color>(
-        (states) {
-          if (states.contains(WidgetState.disabled)) {
-            return Colors.grey.shade600; // Disabled text color in dark mode
-          }
-          return Colors.white; // Default text color
-        },
-      ),
-      backgroundColor: WidgetStateProperty.resolveWith<Color>(
-        (states) {
-          if (states.contains(WidgetState.disabled)) {
-            return Colors
-                .grey.shade800; // Disabled background color in dark mode
-          }
-          return Colors.blueGrey; // Default dark background color
-        },
-      ),
-      side: WidgetStateProperty.all(
-        const BorderSide(color: Colors.blueGrey),
-      ),
-      padding: WidgetStateProperty.all(
-        const EdgeInsets.symmetric(vertical: 18),
-      ),
-      textStyle: WidgetStateProperty.all(
-        const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-    ),
+  static final ElevatedButtonThemeData darkElevatedButtonTheme = _baseTheme(
+    defaultTextColor: Colors.white,
+    disabledTextColor: Colors.grey.shade600,
+    defaultBackgroundColor: Colors.blueGrey,
+    disabledBackgroundColor: Colors.grey.shade800,
+    borderColor: Colors.blueGrey,
   );
 }
