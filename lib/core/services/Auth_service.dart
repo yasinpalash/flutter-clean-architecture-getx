@@ -1,10 +1,8 @@
-
 import 'dart:developer';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   static const String _tokenKey = 'token';
-
 
   // Singleton instance for SharedPreferences
   static late SharedPreferences _preferences;
@@ -12,13 +10,11 @@ class AuthService {
   // Private variables to hold token and userId
   static String? _token;
 
-
   // Initialize SharedPreferences (call this during app startup)
   static Future<void> init() async {
     _preferences = await SharedPreferences.getInstance();
     // Load token and userId from SharedPreferences into private variables
     _token = _preferences.getString(_tokenKey);
-
   }
 
   // Check if a token exists in local storage
@@ -54,7 +50,7 @@ class AuthService {
 
   // Navigate to the login screen (e.g., after logout or token expiry)
   static Future<void> goToLogin() async {
-    // Get.offAllNamed('/userSelection');
+    // Get.offAllNamed('/login');
   }
 
   // Getter for token

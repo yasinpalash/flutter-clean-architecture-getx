@@ -6,8 +6,7 @@ class ResponseData {
 
   ResponseData(
       {required this.isSuccess,
-        required this.statusCode,
-        required this.errorMessage ,
-        required this.responseData});
+      required this.statusCode,
+      required this.errorMessage,
+      required this.responseData});
 }
-
