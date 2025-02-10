@@ -9,7 +9,10 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login",style: TextStyle(),),
+        title: const Text(
+          "Login",
+          style: TextStyle(),
+        ),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width, // Full width of the screen
@@ -22,7 +25,6 @@ class LoginScreen extends StatelessWidget {
                 "this is my book ",
                 style: TextStyle(fontSize: 20),
               ),
-              
             ),
             ElevatedButton(
               onPressed: () {
