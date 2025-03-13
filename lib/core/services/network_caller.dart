@@ -128,7 +128,7 @@ class NetworkCaller {
   // Handle the response from the server
   Future<ResponseData> _handleResponse(Response response) async {
     AppLoggerHelper.info('Response Status: ${response.statusCode}');
-    AppLoggerHelper.info('Response Body: ${response.body}');
+    AppLoggerHelper.info('Response Body: ${response.data.toString()}');
     try {
       final dynamic responseData = response.data;
       switch (response.statusCode) {
