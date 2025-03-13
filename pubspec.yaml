@@ -32,7 +32,6 @@ dependencies:
     sdk: flutter
 
   # Utility Packages
-  http: ^1.1.0
   intl: ^0.18.1
   logger: ^2.0.1
   url_launcher: ^6.1.12
@@ -42,6 +41,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   # State Management
   get: ^4.6.6
+  dio: ^5.8.0+1
 
 dev_dependencies:
   flutter_test:
