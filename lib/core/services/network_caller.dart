@@ -171,6 +171,7 @@ class NetworkCaller {
             responseData: null,
           );
         case 401:
+          await AuthService.logoutUser();
           return ResponseData(
             isSuccess: false,
             statusCode: response.statusCode ?? 401,
