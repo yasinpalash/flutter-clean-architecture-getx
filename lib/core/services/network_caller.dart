@@ -29,7 +29,7 @@ class NetworkCaller {
   Future<ResponseData> postRequest(String endpoint,
       {Map<String, dynamic>? body, String? token}) async {
     AppLoggerHelper.info('POST Request: $endpoint');
-    AppLoggerHelper.info('Request Body: ${jsonEncode(body)}');
+    AppLoggerHelper.info('Request Body: ${jsonEncode(body.toString())}');
 
     try {
       final Response response = await post(
@@ -49,7 +49,7 @@ class NetworkCaller {
   Future<ResponseData> putRequest(String endpoint,
       {Map<String, dynamic>? body, String? token}) async {
     AppLoggerHelper.info('PUT Request: $endpoint');
-    AppLoggerHelper.info('Request Body: ${jsonEncode(body)}');
+    AppLoggerHelper.info('Request Body: ${jsonEncode(body.toString())}');
 
     try {
       final Response response = await put(
