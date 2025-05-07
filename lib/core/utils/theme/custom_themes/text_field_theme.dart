@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_structure_temp/core/utils/constants/app_sizer.dart';
 
 class AppTextFormFieldTheme {
   AppTextFormFieldTheme._();
@@ -22,10 +23,10 @@ class AppTextFormFieldTheme {
       errorMaxLines: 3,
       prefixIconColor: prefixIconColor,
       suffixIconColor: suffixIconColor,
-      labelStyle: TextStyle(fontSize: 14, color: labelColor),
-      hintStyle: TextStyle(fontSize: 14, color: hintColor),
-      errorStyle: TextStyle(fontSize: 12, color: errorColor),
-      floatingLabelStyle: TextStyle(color: labelColor.withOpacity(0.8)),
+      labelStyle: TextStyle(fontSize: 14.sp, color: labelColor),
+      hintStyle: TextStyle(fontSize: 14.sp, color: hintColor),
+      errorStyle: TextStyle(fontSize: 12.sp, color: errorColor),
+      floatingLabelStyle: TextStyle(color: labelColor.withValues(alpha: 0.8)),
       border: OutlineInputBorder(
         borderRadius: borderRadius,
         borderSide: BorderSide(color: borderColor),
@@ -63,8 +64,8 @@ class AppTextFormFieldTheme {
     focusedBorderColor: Colors.black,
     errorBorderColor: Colors.red,
     focusedErrorBorderColor: Colors.orange,
-    borderRadius: BorderRadius.circular(14),
-    contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+    borderRadius: BorderRadius.circular(14.h),
+    contentPadding:  EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
   );
 
   static final InputDecorationTheme darkInputDecorationTheme =
@@ -80,7 +81,7 @@ class AppTextFormFieldTheme {
     focusedBorderColor: Colors.white,
     errorBorderColor: Colors.redAccent,
     focusedErrorBorderColor: Colors.orangeAccent,
-    borderRadius: BorderRadius.circular(14),
-    contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+    borderRadius: BorderRadius.circular(14.h),
+    contentPadding:  EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
   );
 }

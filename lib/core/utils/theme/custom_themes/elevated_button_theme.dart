@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_structure_temp/core/utils/constants/app_sizer.dart';
 
 class AppElevatedButtonTheme {
   AppElevatedButtonTheme._();
@@ -23,8 +24,8 @@ class AppElevatedButtonTheme {
         ),
         side: WidgetStateProperty.all(BorderSide(color: borderColor)),
         padding: WidgetStatePropertyAll(padding),
-        textStyle: const WidgetStatePropertyAll(
-          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        textStyle:  WidgetStatePropertyAll(
+          TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
         ),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: borderRadius),
@@ -39,8 +40,8 @@ class AppElevatedButtonTheme {
     defaultBackgroundColor: Colors.blue,
     disabledBackgroundColor: Colors.grey.shade300,
     borderColor: Colors.blue,
-    padding: const EdgeInsets.symmetric(vertical: 18),
-    borderRadius: BorderRadius.circular(12),
+    padding:  EdgeInsets.symmetric(vertical: 18.h),
+    borderRadius: BorderRadius.circular(12.h),
   );
 
   static final ElevatedButtonThemeData darkElevatedButtonTheme = _baseTheme(
@@ -49,7 +50,7 @@ class AppElevatedButtonTheme {
     defaultBackgroundColor: Colors.blueGrey,
     disabledBackgroundColor: Colors.grey.shade800,
     borderColor: Colors.blueGrey,
-    padding: const EdgeInsets.symmetric(vertical: 18),
-    borderRadius: BorderRadius.circular(12),
+    padding:  EdgeInsets.symmetric(vertical: 18.h),
+    borderRadius: BorderRadius.circular(12.h),
   );
 }
