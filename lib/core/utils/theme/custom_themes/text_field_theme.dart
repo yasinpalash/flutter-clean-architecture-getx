@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_structure_temp/core/utils/constants/app_sizer.dart';
 
 class AppTextFormFieldTheme {
   AppTextFormFieldTheme._();
@@ -15,42 +16,45 @@ class AppTextFormFieldTheme {
     required Color focusedBorderColor,
     required Color errorBorderColor,
     required Color focusedErrorBorderColor,
+    required BorderRadius borderRadius,
+    required EdgeInsetsGeometry contentPadding,
   }) {
     return InputDecorationTheme(
       errorMaxLines: 3,
       prefixIconColor: prefixIconColor,
       suffixIconColor: suffixIconColor,
-      labelStyle: TextStyle(fontSize: 14, color: labelColor),
-      hintStyle: TextStyle(fontSize: 14, color: hintColor),
-      errorStyle: TextStyle(fontSize: 12, color: errorColor),
+      labelStyle: TextStyle(fontSize: 14.sp, color: labelColor),
+      hintStyle: TextStyle(fontSize: 14.sp, color: hintColor),
+      errorStyle: TextStyle(fontSize: 12.sp, color: errorColor),
       floatingLabelStyle: TextStyle(color: labelColor.withValues(alpha: 0.8)),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: borderRadius,
         borderSide: BorderSide(color: borderColor),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: borderRadius,
         borderSide: BorderSide(color: enabledBorderColor),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: borderRadius,
         borderSide: BorderSide(color: focusedBorderColor),
       ),
       errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: borderRadius,
         borderSide: BorderSide(color: errorBorderColor),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: borderRadius,
         borderSide: BorderSide(color: focusedErrorBorderColor),
       ),
+      contentPadding: contentPadding,
     );
   }
 
   static final InputDecorationTheme lightInputDecorationTheme =
-      _baseInputDecorationTheme(
+  _baseInputDecorationTheme(
     labelColor: Colors.black,
-    hintColor: Colors.black,
+    hintColor: Colors.black54,
     errorColor: Colors.red,
     focusedErrorColor: Colors.orange,
     prefixIconColor: Colors.grey,
@@ -60,10 +64,12 @@ class AppTextFormFieldTheme {
     focusedBorderColor: Colors.black,
     errorBorderColor: Colors.red,
     focusedErrorBorderColor: Colors.orange,
+    borderRadius: BorderRadius.circular(14.h),
+    contentPadding:  EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
   );
 
   static final InputDecorationTheme darkInputDecorationTheme =
-      _baseInputDecorationTheme(
+  _baseInputDecorationTheme(
     labelColor: Colors.white,
     hintColor: Colors.white70,
     errorColor: Colors.redAccent,
@@ -75,5 +81,7 @@ class AppTextFormFieldTheme {
     focusedBorderColor: Colors.white,
     errorBorderColor: Colors.redAccent,
     focusedErrorBorderColor: Colors.orangeAccent,
+    borderRadius: BorderRadius.circular(14.h),
+    contentPadding:  EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
   );
 }
