@@ -14,8 +14,7 @@ class AppTheme {
       fontFamily: GoogleFonts.smoochSans().fontFamily,
       brightness: Brightness.light,
       primaryColor: AppColors.primary,
-      scaffoldBackgroundColor: Colors.white,
-      // textTheme: AppTextTheme.lightTextTheme,
+      scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
       elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
       appBarTheme: AppBarThemeData.lightAppBarTheme,
       inputDecorationTheme: AppTextFormFieldTheme.lightInputDecorationTheme);
@@ -26,7 +25,6 @@ class AppTheme {
       brightness: Brightness.dark,
       primaryColor: AppColors.primary,
       scaffoldBackgroundColor: Colors.black,
-      // textTheme: AppTextTheme.darkTextTheme,
       elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
       appBarTheme: AppBarThemeData.darkAppBarTheme,
       inputDecorationTheme: AppTextFormFieldTheme.darkInputDecorationTheme);
