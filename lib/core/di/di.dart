@@ -10,4 +10,5 @@ Future<void> initDependencies() async {
   //   fenix: true,
   // );
   // await NetworkChecker.init();
+  //await AuthService.init();
 }
