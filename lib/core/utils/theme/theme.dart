@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_structure_temp/core/utils/constants/app_colors.dart';
+import '../../constants/app_colors.dart';
 import 'custom_themes/app_bar_theme.dart';
 import 'custom_themes/elevated_button_theme.dart';
 import 'custom_themes/text_field_theme.dart';

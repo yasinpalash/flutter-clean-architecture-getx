@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_structure_temp/core/utils/constants/app_sizer.dart';
+import 'package:project_structure_temp/core/constants/app_sizer.dart';
 
 class AppElevatedButtonTheme {
   AppElevatedButtonTheme._();

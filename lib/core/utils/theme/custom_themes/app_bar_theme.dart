@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_structure_temp/core/utils/constants/app_colors.dart';
+import '../../../constants/app_colors.dart';
 
 class AppBarThemeData {
   AppBarThemeData._();

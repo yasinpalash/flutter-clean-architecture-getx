@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project_structure_temp/core/utils/logging/loggerformain.dart';
 import 'app.dart';
-import 'core/di/di.dart';
+import 'core/di/dependency_injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
