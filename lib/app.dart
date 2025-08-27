@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart' as foundation;
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:project_structure_temp/core/bindings/controller_binder.dart';
-import 'package:project_structure_temp/core/utils/constants/app_sizer.dart';
+import 'package:project_structure_temp/core/constants/app_sizer.dart';
 import 'package:project_structure_temp/routes/app_routes.dart';
 import 'core/utils/theme/theme.dart';
 
