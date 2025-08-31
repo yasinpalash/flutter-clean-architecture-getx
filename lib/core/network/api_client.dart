@@ -1,11 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
 import '../constants/app_urls.dart';
 import 'interceptors/global_error_interceptor.dart';
 import 'interceptors/http_error_interceptor.dart';
 import 'interceptors/internet_check_interceptor.dart';
-
 
 class ApiClient {
   static Dio createDio() {
@@ -13,7 +11,7 @@ class ApiClient {
       BaseOptions(
         baseUrl: AppUrls.baseUrl,
         connectTimeout: const Duration(seconds: 15),
-        receiveTimeout: const Duration(seconds: 1),
+        receiveTimeout: const Duration(seconds: 15),
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
@@ -35,7 +33,6 @@ class ApiClient {
         compact: true,
       ),
     ]);
-
     return dio;
   }
 }
