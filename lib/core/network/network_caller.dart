@@ -204,3 +204,4 @@ extension NetworkCaller on Dio {
     return const UnknownNetworkException();
   }
 }
+

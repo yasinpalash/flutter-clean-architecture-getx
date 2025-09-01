@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:network_caller/Core/network/api_client.dart';
-import 'package:network_caller/Core/network/network_caller.dart';
-import 'package:network_caller/Core/network/result.dart';
-import 'package:network_caller/Features/Courses/data/models/course_sessions_model.dart';
-import '../../../../Core/utils/constants/app_urls.dart';
+import 'package:project_structure_temp/core/network/network_caller.dart';
+
+import '../../../../Core/network/result.dart';
+import '../../../../core/constants/app_urls.dart';
+import '../../../../core/network/api_client.dart';
+import '../models/course_sessions_model.dart';
+
 
 class CourseRemoteDataSource {
   final Dio _dio = ApiClient.createDio();

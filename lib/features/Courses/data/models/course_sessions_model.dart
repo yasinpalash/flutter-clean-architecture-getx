@@ -1,4 +1,5 @@
-import 'package:network_caller/Features/Courses/data/models/sessions_model.dart';
+
+import 'package:project_structure_temp/features/Courses/data/models/sessions_model.dart';
 
 class CoursesSessionModel {
   bool? success;

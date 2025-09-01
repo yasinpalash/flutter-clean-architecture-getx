@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:network_caller/Features/Courses/controllers/course_list_controller.dart';
+import '../../controllers/course_list_controller.dart';
 import '../widgets/course_card.dart';
 import '../widgets/session_card.dart';
 

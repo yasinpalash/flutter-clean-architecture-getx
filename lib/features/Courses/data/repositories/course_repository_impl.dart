@@ -1,5 +1,5 @@
-import 'package:network_caller/Features/Courses/domain/repositories/course_repository.dart';
 import '../../../../Core/network/result.dart';
+import '../../domain/repositories/course_repository.dart';
 import '../data_sources/course_remote_data_source.dart';
 import '../models/course_sessions_model.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:network_caller/Core/utils/logging/logger.dart';
-import 'package:network_caller/Features/Authentication/data/models/login_request_body.dart';
-import 'package:network_caller/Features/Courses/presentation/screens/course_screen.dart';
-import '../../../Core/models/response_data.dart';
 import '../../../Core/network/result.dart';
 import '../../../Core/network/server_exception.dart';
+import '../../../core/network/response_data.dart';
+import '../../../core/utils/logging/logger.dart';
+import '../../Courses/presentation/screens/course_screen.dart';
+import '../data/models/login_request_body.dart';
 import '../domain/repositories/login_repository.dart';
 
 class LoginController extends GetxController {
@@ -22,7 +22,6 @@ class LoginController extends GetxController {
   void togglePasswordVisibility() {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
-
 
   Future<void> login() async {
     if (!formKey.currentState!.validate()) return;
@@ -44,7 +43,7 @@ class LoginController extends GetxController {
           final accessToken = raw['accessToken'];
           AppLoggerHelper.info("Login Success | Access Token: $accessToken");
 
-          Get.to(()=> CourseScreen());
+          Get.to(() => CourseScreen());
 
           break;
 

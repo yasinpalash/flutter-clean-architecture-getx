@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:network_caller/Core/utils/logging/logger.dart';
-import 'package:network_caller/Features/Courses/data/models/course_sessions_model.dart';
-import 'package:network_caller/Features/Courses/domain/repositories/course_repository.dart';
 import '../../../Core/network/result.dart';
 import '../../../Core/network/server_exception.dart';
+import '../../../core/utils/logging/logger.dart';
+import '../data/models/course_sessions_model.dart';
+import '../domain/repositories/course_repository.dart';
 
 class CourseListController extends GetxController {
   final CourseRepository _courseRepository;

@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:network_caller/Core/models/response_data.dart';
-import 'package:network_caller/Core/network/api_client.dart';
-import 'package:network_caller/Core/network/network_caller.dart';
-import 'package:network_caller/Core/network/result.dart';
-import 'package:network_caller/Core/utils/constants/app_urls.dart';
-import 'package:network_caller/Features/Authentication/data/models/login_request_body.dart';
+import 'package:project_structure_temp/core/network/network_caller.dart';
+import '../../../../Core/network/result.dart';
+import '../../../../core/network/api_client.dart';
+import '../../../../core/network/response_data.dart';
+import '../models/login_request_body.dart';
 
 class LoginRemoteDataSource {
   final Dio _dio = ApiClient.createDio();

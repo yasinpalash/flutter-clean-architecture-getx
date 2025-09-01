@@ -1,8 +1,8 @@
-import 'package:network_caller/Core/models/response_data.dart';
-import 'package:network_caller/Features/Authentication/data/data_sources/login_remote_data_sources.dart';
-import 'package:network_caller/Features/Authentication/data/models/login_request_body.dart';
-import 'package:network_caller/Features/Authentication/domain/repositories/login_repository.dart';
-import 'package:network_caller/Core/network/result.dart';
+import '../../../../Core/network/result.dart';
+import '../../../../core/network/response_data.dart';
+import '../../../authentication/domain/repositories/login_repository.dart';
+import '../data_sources/login_remote_data_sources.dart';
+import '../models/login_request_body.dart';
 
 class LoginRepositoryImpl extends LoginRepository {
   final LoginRemoteDataSource _authRepository;
