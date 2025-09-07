@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../../errors/exceptions.dart';
-import '../../services/network_checker.dart';
+import 'package:project_structure_temp/core/errors/exceptions.dart';
+import 'package:project_structure_temp/core/services/network_checker.dart';
 
 class InternetCheckInterceptor extends Interceptor {
   @override
@@ -13,7 +13,7 @@ class InternetCheckInterceptor extends Interceptor {
       handler.reject(
         DioException(
           requestOptions: options,
-          error: NoInternetException(),
+          error: const NoInternetException(),
           type: DioExceptionType.unknown,
         ),
         true,

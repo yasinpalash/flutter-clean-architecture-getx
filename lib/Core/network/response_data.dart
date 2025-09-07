@@ -12,9 +12,9 @@ class ResponseData<T> {
   });
 
   factory ResponseData.fromJson(
-      Map<String, dynamic> json, {
-        T Function(dynamic)? fromJsonT,
-      }) {
+    Map<String, dynamic> json, {
+    T Function(dynamic)? fromJsonT,
+  }) {
     return ResponseData<T>(
       isSuccess: json['isSuccess'] ?? false,
       message: json['message'] ?? '',

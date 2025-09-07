@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-
-import '../../errors/exceptions.dart';
+import 'package:project_structure_temp/core/errors/exceptions.dart';
 
 class HttpErrorInterceptor extends Interceptor {
   @override
@@ -9,14 +8,15 @@ class HttpErrorInterceptor extends Interceptor {
 
     if (statusCode != null) {
       switch (statusCode) {
-      // 2xx: Successful responses (normally not errors, but listed for clarity)
+        // 2xx: Successful responses (normally not errors, but listed for clarity)
         case 204:
           err = err.copyWith(error: const NetworkException("No Content"));
           break;
 
-      // 3xx: Redirection (handle as needed)
+        // 3xx: Redirection (handle as needed)
         case 301:
-          err = err.copyWith(error: const NetworkException("Moved Permanently"));
+          err =
+              err.copyWith(error: const NetworkException("Moved Permanently"));
           break;
         case 302:
           err = err.copyWith(error: const NetworkException("Found (Redirect)"));
@@ -25,7 +25,7 @@ class HttpErrorInterceptor extends Interceptor {
           err = err.copyWith(error: const NetworkException("Not Modified"));
           break;
 
-      // 4xx: Client Errors
+        // 4xx: Client Errors
         case 400:
           err = err.copyWith(error: const NetworkException("Bad Request"));
           break;
@@ -39,7 +39,8 @@ class HttpErrorInterceptor extends Interceptor {
           err = err.copyWith(error: const NotFoundException());
           break;
         case 405:
-          err = err.copyWith(error: const NetworkException("Method Not Allowed"));
+          err =
+              err.copyWith(error: const NetworkException("Method Not Allowed"));
           break;
         case 408:
           err = err.copyWith(error: const TimeoutException());
@@ -51,38 +52,46 @@ class HttpErrorInterceptor extends Interceptor {
           err = err.copyWith(error: const NetworkException("Gone"));
           break;
         case 415:
-          err = err.copyWith(error: const NetworkException("Unsupported Media Type"));
+          err = err.copyWith(
+              error: const NetworkException("Unsupported Media Type"));
           break;
         case 429:
-          err = err.copyWith(error: const NetworkException("Too Many Requests"));
+          err =
+              err.copyWith(error: const NetworkException("Too Many Requests"));
           break;
 
-      // 5xx: Server Errors
+        // 5xx: Server Errors
         case 500:
-          err = err.copyWith(error: const ServerErrorException("Internal Server Error"));
+          err = err.copyWith(
+              error: const ServerErrorException("Internal Server Error"));
           break;
         case 501:
-          err = err.copyWith(error: const ServerErrorException("Not Implemented"));
+          err = err.copyWith(
+              error: const ServerErrorException("Not Implemented"));
           break;
         case 502:
           err = err.copyWith(error: const ServerErrorException("Bad Gateway"));
           break;
         case 503:
-          err = err.copyWith(error: const ServerErrorException("Service Unavailable"));
+          err = err.copyWith(
+              error: const ServerErrorException("Service Unavailable"));
           break;
         case 504:
           err = err.copyWith(error: const TimeoutException());
           break;
         case 505:
-          err = err.copyWith(error: const ServerErrorException("HTTP Version Not Supported"));
+          err = err.copyWith(
+              error: const ServerErrorException("HTTP Version Not Supported"));
           break;
 
-      // Fallback for any status code
+        // Fallback for any status code
         default:
           if (statusCode >= 500) {
-            err = err.copyWith(error: ServerErrorException("Server error ($statusCode)"));
+            err = err.copyWith(
+                error: ServerErrorException("Server error ($statusCode)"));
           } else {
-            err = err.copyWith(error: NetworkException("HTTP Error: $statusCode"));
+            err = err.copyWith(
+                error: NetworkException("HTTP Error: $statusCode"));
           }
           break;
       }

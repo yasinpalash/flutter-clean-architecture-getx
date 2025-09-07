@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-
-import '../../errors/exceptions.dart';
+import 'package:project_structure_temp/core/errors/exceptions.dart';
 
 class GlobalErrorInterceptor extends Interceptor {
   @override

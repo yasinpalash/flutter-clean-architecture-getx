@@ -1,8 +1,7 @@
-import 'dart:async';
 import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get/get.dart';
-import '../constants/app_urls.dart';
+import 'package:project_structure_temp/core/constants/app_urls.dart';
 
 class NetworkChecker extends GetxService {
   static final Connectivity _connectivity = Connectivity();

@@ -1,18 +1,17 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:project_structure_temp/core/errors/exceptions.dart';
 import 'package:project_structure_temp/core/network/result.dart';
 import 'package:project_structure_temp/core/network/server_exception.dart';
-import '../errors/exceptions.dart';
-import '../utils/logging/logger.dart';
-
+import 'package:project_structure_temp/core/utils/logging/logger.dart';
 
 extension NetworkCaller on Dio {
   /// GET Request
   Future<Result<T>> getRequest<T>(
-      String path, {
-        required T Function(dynamic json) fromJson,
-        Map<String, dynamic>? queryParameters,
-      }) async {
+    String path, {
+    required T Function(dynamic json) fromJson,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     try {
       final response = await get(path, queryParameters: queryParameters);
       if (response.statusCode == 200 && response.data != null) {
@@ -30,11 +29,11 @@ extension NetworkCaller on Dio {
 
   /// POST Request
   Future<Result<T>> postRequest<T>(
-      String path, {
-        required T Function(dynamic json) fromJson,
-        Map<String, dynamic>? queryParameters,
-        dynamic data,
-      }) async {
+    String path, {
+    required T Function(dynamic json) fromJson,
+    Map<String, dynamic>? queryParameters,
+    dynamic data,
+  }) async {
     try {
       final response = await post(
         path,
@@ -56,11 +55,11 @@ extension NetworkCaller on Dio {
 
   /// PUT Request
   Future<Result<T>> putRequest<T>(
-      String path, {
-        required T Function(dynamic json) fromJson,
-        Map<String, dynamic>? queryParameters,
-        dynamic data,
-      }) async {
+    String path, {
+    required T Function(dynamic json) fromJson,
+    Map<String, dynamic>? queryParameters,
+    dynamic data,
+  }) async {
     try {
       final response = await put(
         path,
@@ -82,11 +81,11 @@ extension NetworkCaller on Dio {
 
   /// PATCH Request
   Future<Result<T>> patchRequest<T>(
-      String path, {
-        required T Function(dynamic json) fromJson,
-        Map<String, dynamic>? queryParameters,
-        dynamic data,
-      }) async {
+    String path, {
+    required T Function(dynamic json) fromJson,
+    Map<String, dynamic>? queryParameters,
+    dynamic data,
+  }) async {
     try {
       final response = await patch(
         path,
@@ -108,11 +107,11 @@ extension NetworkCaller on Dio {
 
   /// DELETE Request
   Future<Result<T>> deleteRequest<T>(
-      String path, {
-        required T Function(dynamic json) fromJson,
-        Map<String, dynamic>? queryParameters,
-        dynamic data,
-      }) async {
+    String path, {
+    required T Function(dynamic json) fromJson,
+    Map<String, dynamic>? queryParameters,
+    dynamic data,
+  }) async {
     try {
       final response = await delete(
         path,
@@ -134,11 +133,11 @@ extension NetworkCaller on Dio {
 
   /// Download File
   Future<Result<T>> downloadFile<T>(
-      String url,
-      String savePath, {
-        required T Function(String path) parser,
-        ProgressCallback? onReceiveProgress,
-      }) async {
+    String url,
+    String savePath, {
+    required T Function(String path) parser,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final response = await download(
         url,
@@ -162,11 +161,11 @@ extension NetworkCaller on Dio {
 
   /// Upload File (e.g. image/pdf/etc.)
   Future<Result<T>> uploadFile<T>(
-      String path, {
-        required T Function(dynamic json) fromJson,
-        required FormData formData,
-        ProgressCallback? onSendProgress,
-      }) async {
+    String path, {
+    required T Function(dynamic json) fromJson,
+    required FormData formData,
+    ProgressCallback? onSendProgress,
+  }) async {
     try {
       final response = await post(
         path,
@@ -204,4 +203,3 @@ extension NetworkCaller on Dio {
     return const UnknownNetworkException();
   }
 }
-
