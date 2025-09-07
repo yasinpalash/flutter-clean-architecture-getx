@@ -1,0 +1,2 @@
+/Users/neoscoder5/Documents/GitHub/getx_standard/android/app/.cxx/Debug/1me5q32a/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/neoscoder5/Documents/GitHub/getx_standard/android/app/.cxx/Debug/1me5q32a/armeabi-v7a/CMakeFiles/rebuild_cache.dir

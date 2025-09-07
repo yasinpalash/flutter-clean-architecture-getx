@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/neoscoder5/Development/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/neoscoder5/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/neoscoder5/Documents/GitHub/getx_standard/android/app/.cxx/Debug/1me5q32a/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/neoscoder5/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/neoscoder5/Documents/GitHub/getx_standard/android/app/.cxx/Debug/1me5q32a/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

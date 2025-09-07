@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:project_structure_temp/features/authentication/presentation/screens/login_screen.dart';
+import 'package:project_structure_temp/Features/Authentication/presentation/screens/login_screen.dart';
+import 'package:project_structure_temp/Features/Courses/presentation/screens/course_screen.dart';
 
 class AppRoute {
   static String loginScreen = "/loginScreen";
@@ -8,7 +9,7 @@ class AppRoute {
 
   static List<GetPage> routes = [
     GetPage(name: loginScreen, page: () => const LoginScreen()),
-    GetPage(name: init, page: () => const SplashScreen()),
+    //GetPage(name: init, page: () => const SplashScreen()),
     GetPage(name: courseScreen, page: () => CourseScreen())
   ];
 }
