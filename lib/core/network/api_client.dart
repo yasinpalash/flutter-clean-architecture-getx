@@ -21,6 +21,7 @@ class ApiClient {
 
     dio.interceptors.addAll([
       InternetCheckInterceptor(),
+      //TokenInterceptor(),
       GlobalErrorInterceptor(),
       HttpErrorInterceptor(),
       PrettyDioLogger(
