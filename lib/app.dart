@@ -7,7 +7,6 @@ import 'package:project_structure_temp/core/constants/app_sizer.dart';
 import 'package:project_structure_temp/routes/app_routes.dart';
 import 'core/utils/theme/theme.dart';
 
-
 class PlatformUtils {
   static bool get isIOS =>
       foundation.defaultTargetPlatform == TargetPlatform.iOS;
