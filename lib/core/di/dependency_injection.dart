@@ -5,6 +5,7 @@ import 'package:project_structure_temp/Features/Authentication/domain/repositori
 import 'package:project_structure_temp/Features/Courses/data/data_sources/course_remote_data_source.dart';
 import 'package:project_structure_temp/Features/Courses/data/repositories/course_repository_impl.dart';
 import 'package:project_structure_temp/Features/Courses/domain/repositories/course_repository.dart';
+import 'package:project_structure_temp/core/services/Auth_service.dart';
 import 'package:project_structure_temp/core/services/network_checker.dart';
 
 Future<void> initDependencies() async {
@@ -17,4 +18,5 @@ Future<void> initDependencies() async {
     fenix: true,
   );
   await NetworkChecker.init();
+  await AuthService.init();
 }

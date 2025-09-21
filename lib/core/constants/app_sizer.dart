@@ -7,27 +7,44 @@ const double kFigmaDesignStatusBar = 0;
 enum DeviceType { mobile, tablet, desktop }
 
 typedef ResponsiveBuild = Widget Function(
-    BuildContext context,
-    Orientation orientation,
-    DeviceType deviceType,
-    );
-
+  BuildContext context,
+  Orientation orientation,
+  DeviceType deviceType,
+);
 
 extension ResponsiveExtension on num {
-  double get w => (this * SizeUtils.width) / kFigmaDesignWidth;
-  double get h => (this * SizeUtils.height) / kFigmaDesignHeight;
-  double get sp => (this * SizeUtils.width) / kFigmaDesignWidth;
+  double get w => SizeUtils.width == 0
+      ? toDouble()
+      : (this * SizeUtils.width) / kFigmaDesignWidth;
+
+  double get h => SizeUtils.height == 0
+      ? toDouble()
+      : (this * SizeUtils.height) / kFigmaDesignHeight;
+
+  double get sp => SizeUtils.width == 0
+      ? toDouble()
+      : (this * SizeUtils.width) / kFigmaDesignWidth;
+
+  double get r {
+    final shortestSide =
+        SizeUtils.width < SizeUtils.height ? SizeUtils.width : SizeUtils.height;
+    return (this * shortestSide) / kFigmaDesignWidth;
+  }
 }
 
-
 extension FormatExtension on double {
-  double toFixed(int fractionDigits) => double.parse(toStringAsFixed(fractionDigits));
+  double toFixed(int fractionDigits) =>
+      double.parse(toStringAsFixed(fractionDigits));
+
   double nonZero({double defaultValue = 0.0}) => this > 0 ? this : defaultValue;
-  String toFormattedString({int fractionDigits = 2}) => toStringAsFixed(fractionDigits);
+
+  String toFormattedString({int fractionDigits = 2}) =>
+      toStringAsFixed(fractionDigits);
 }
 
 class Sizer extends StatelessWidget {
   const Sizer({super.key, required this.builder});
+
   final ResponsiveBuild builder;
 
   @override
@@ -57,11 +74,12 @@ class SizeUtils {
   static late double height;
   static late EdgeInsets safeAreaPadding;
   static bool debugMode = false;
+
   static void setScreenSize(
-      BoxConstraints constraints,
-      Orientation currentOrientation,
-      BuildContext context,
-      ) {
+    BoxConstraints constraints,
+    Orientation currentOrientation,
+    BuildContext context,
+  ) {
     boxConstraints = constraints;
     orientation = currentOrientation;
     safeAreaPadding = MediaQuery.of(context).padding;
@@ -90,6 +108,7 @@ class SizeUtils {
     debugPrint("Device Type: $deviceType");
     debugPrint("Orientation: $orientation");
   }
+
   static double adaptivePadding({
     required double mobile,
     required double tablet,
@@ -104,6 +123,8 @@ class SizeUtils {
         return mobile;
     }
   }
+
   static bool get isPortrait => orientation == Orientation.portrait;
+
   static bool get isLandscape => orientation == Orientation.landscape;
 }
