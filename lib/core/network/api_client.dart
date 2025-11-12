@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:project_structure_temp/core/constants/app_urls.dart';
 import 'package:project_structure_temp/core/network/interceptors/global_error_interceptor.dart';
@@ -24,12 +25,16 @@ class ApiClient {
       //TokenInterceptor(),
       GlobalErrorInterceptor(),
       HttpErrorInterceptor(),
-      PrettyDioLogger(
-        requestBody: true,
-        responseHeader: true,
-        responseBody: true,
-        error: true,
-      ),
+      if (!kReleaseMode)
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseHeader: true,
+          responseBody: true,
+          error: true,
+          compact: true,
+          maxWidth: 90,
+        ),
     ]);
 
     return dio;
