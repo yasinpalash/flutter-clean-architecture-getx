@@ -16,7 +16,7 @@ class AppTheme {
       primaryColor: AppColors.primary,
       scaffoldBackgroundColor: AppColors.lightScaffoldBackgroundColor,
       elevatedButtonTheme: AppElevatedButtonTheme.lightElevatedButtonTheme,
-      appBarTheme: AppBarThemeData.lightAppBarTheme,
+      appBarTheme: AppBarForTheme.lightAppBarTheme,
       inputDecorationTheme: AppTextFormFieldTheme.lightInputDecorationTheme,
       textTheme: AppTextTheme.lightTextTheme);
 
@@ -27,7 +27,7 @@ class AppTheme {
       primaryColor: AppColors.primary,
       scaffoldBackgroundColor: AppColors.darkScaffoldBackgroundColor,
       elevatedButtonTheme: AppElevatedButtonTheme.darkElevatedButtonTheme,
-      appBarTheme: AppBarThemeData.darkAppBarTheme,
+      appBarTheme: AppBarForTheme.darkAppBarTheme,
       inputDecorationTheme: AppTextFormFieldTheme.darkInputDecorationTheme,
       textTheme: AppTextTheme.darkTextTheme);
 }

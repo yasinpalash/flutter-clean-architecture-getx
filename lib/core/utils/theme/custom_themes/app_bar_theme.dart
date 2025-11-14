@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../constants/app_colors.dart';
 
-class AppBarThemeData {
-  AppBarThemeData._();
+class AppBarForTheme {
+  AppBarForTheme._();
 
   static AppBarTheme _baseAppBarTheme({
     required Color backgroundColor,

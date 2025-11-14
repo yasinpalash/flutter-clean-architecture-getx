@@ -7,6 +7,7 @@ import 'package:project_structure_temp/Features/Courses/data/repositories/course
 import 'package:project_structure_temp/Features/Courses/domain/repositories/course_repository.dart';
 import 'package:project_structure_temp/core/services/Auth_service.dart';
 import 'package:project_structure_temp/core/services/network_checker.dart';
+import '../utils/listener/connection_listener.dart';
 
 Future<void> initDependencies() async {
   Get.lazyPut<LoginRepository>(
@@ -18,5 +19,7 @@ Future<void> initDependencies() async {
     fenix: true,
   );
   await NetworkChecker.init();
+  ConnectionListener.init();
+
   await AuthService.init();
 }
