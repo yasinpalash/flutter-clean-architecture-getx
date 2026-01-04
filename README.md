@@ -1,16 +1,19 @@
-# project_structure_temp
+# 🚀 Flutter Clean Architecture with GetX
 
-A new Flutter project.
+- A scalable Flutter application built using Clean Architecture principles,GetX for state management & dependency injection, and Dio for networking. This project demonstrates a real-world, production-ready architecture with proper error handling, API abstraction, and modular feature separation.
+---
+## 📌 Features
 
-## Getting Started
+-  Clean Architecture (Data / Domain / Presentation)
+-  GetX (State Management, Routing, Dependency Injection)
+-  Dio with Interceptors
+-  Centralized API Client
+-  Global Network & HTTP Error Handling
+-  Repository Pattern
+-  Feature-based Modular Structure
+-  Result & Response Wrapper Pattern
+-  Scalable & Maintainable Codebase
+---
+## 🏗️ Architecture Overview
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
