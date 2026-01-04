@@ -18,6 +18,151 @@ This project demonstrates **real-world architecture**, **proper error handling**
 -  Scalable & Maintainable Codebase
 
 ---
+## Project Description
+
+The application is divided into three main layers:
+
+- **Data Layer**
+- **Domain Layer**
+- **Presentation Layer**
+
+Each layer has a single responsibility and communicates only through well-defined abstractions.
+
+---
+
+## 📦 Data Layer
+
+The **Data layer** is the outermost layer of the application.  
+It is responsible for fetching data from remote APIs, handling network communication, mapping responses to models, and implementing repository contracts defined in the Domain layer.
+
+### a. Data Sources
+
+Data Sources define how data is retrieved and stored.
+
+#### 🔹 Remote Data Source
+- Handles HTTP requests using **Dio**
+- Uses a centralized `ApiClient`
+- Communicates with REST APIs
+- Converts API responses into structured models
+- Returns data wrapped inside `Result<T>` for safe error handling
+
+Examples:
+- `LoginRemoteDataSource`
+- `CourseRemoteDataSource`
+
+> Local Data Sources (e.g. Hive / SharedPreferences) can be added later for caching or offline support.
+
+---
+
+### b. Repository Implementations
+
+Repositories act as a **bridge between the Data layer and the Domain layer**.
+
+- Implements repository interfaces defined in the Domain layer
+- Coordinates data from one or more data sources
+- Keeps the Domain layer independent of networking and storage details
+
+Examples:
+- `LoginRepositoryImpl`
+- `CourseRepositoryImpl`
+
+---
+
+### c. Models
+
+- Represent API request and response structures
+- Responsible only for data serialization and deserialization
+- Contain no business logic
+
+Examples:
+- `SignInRequest`
+- `CoursesSessionModel`
+
+---
+
+## 🧠 Domain Layer
+
+The **Domain layer** contains the **core business logic** of the application.  
+It is written in **pure Dart**, without any dependency on Flutter, GetX, or Dio.
+
+This ensures:
+- High testability
+- Framework independence
+- Clean separation of concerns
+
+### a. Repository Interfaces
+
+- Define contracts for data operations
+- Implemented by the Data layer
+- Used directly by controllers in the Presentation layer
+
+Examples:
+- `LoginRepository`
+- `CourseRepository`
+
+---
+
+## 🎨 Presentation Layer
+
+The **Presentation layer** is the most framework-dependent layer.  
+It is responsible for UI rendering, handling user interactions, and reacting to state changes.
+
+This layer **does not contain any business logic**.
+
+---
+
+### a. Controllers
+
+- Implemented using **GetX Controllers**
+- Handle UI state such as loading, success, and error
+- Communicate with Domain repositories
+- Control navigation and user actions
+
+Examples:
+- `LoginController`
+- `CourseListController`
+
+---
+
+### b. Widgets
+
+- Reusable UI components
+- Stateless or reactive using `Obx`
+- Listen to controller state changes
+
+Examples:
+- `CourseCard`
+- `SessionCard`
+
+---
+
+### c. Screens / Views
+
+- Combine widgets and controllers
+- Represent complete UI screens
+- Handle navigation and screen-level interactions
+
+Examples:
+- `LoginScreen`
+- `CourseScreen`
+
+---
+
+## 🔁 Data Flow Overview
+
+```text
+UI (Screen / Widget)
+        ↓
+Controller (GetX)
+        ↓
+Domain Repository (Interface)
+        ↓
+Repository Implementation
+        ↓
+Remote / Local Data Source
+        ↓
+API / Cache
+````
 ##  Folder Structure
 ```txt
 lib/
