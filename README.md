@@ -5,8 +5,12 @@ A **scalable, production-ready Flutter application** built using **Clean Archite
 This project demonstrates **real-world architecture**, **proper error handling**, **API abstraction**, and **feature-based modular design**.
 
 ---
+### Features
 
-##  Features
+- Login
+- Fetch Course
+  
+### What is used in this project?
 -  Clean Architecture (Data / Domain / Presentation)
 -  GetX (State Management, Routing, Dependency Injection)
 -  Dio with Interceptors
