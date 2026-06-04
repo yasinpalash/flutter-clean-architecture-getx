@@ -394,47 +394,106 @@ Dio API Client
 ##  Folder Structure
 ```txt
 lib/
-│
-├── core/
-│   ├── bindings/                 # Global GetX bindings
-│   ├── common/                   # Shared widgets & helpers
-│   ├── constants/                # App constants (URLs, colors, sizes)
-│   ├── di/                       # Dependency injection setup
-│   ├── errors/                   # App & network exceptions
-│   ├── localization/             # Localization & translations
-│   ├── network/
-│   │   ├── interceptors/         # Dio interceptors
-│   │   ├── api_client.dart       # Base Dio client
-│   │   ├── network_caller.dart   # API call handler
-│   │   ├── response_data.dart    # API response wrapper
-│   │   ├── result.dart           # Success / Failure result pattern
-│   │   └── server_exception.dart # Server & network exceptions
-│   ├── services/                 # Auth, storage, listeners
-│   └── utils/                    # Logger, validators, helpers
-│
-├── features/
-│   ├── authentication/
+├── Features/
+│   ├── Authentication/
 │   │   ├── controllers/
+│   │   │   └── login_controller.dart
 │   │   ├── data/
-│   │   │   ├── datasources/
+│   │   │   ├── data_sources/
+│   │   │   │   └── login_remote_data_sources.dart
 │   │   │   ├── models/
+│   │   │   │   └── login_request_body.dart
 │   │   │   └── repositories/
+│   │   │       └── login_repository_impl.dart
 │   │   ├── domain/
-│   │   │   ├── entities/
-│   │   │   ├── repositories/
-│   │   │   └── usecases/
+│   │   │   └── repositories/
+│   │   │       └── login_repository.dart
 │   │   └── presentation/
 │   │       ├── screens/
+│   │       │   └── login_screen.dart
 │   │       └── widgets/
-│   │
-│   └── courses/
+│   │           └── dummy.dart
+│   └── Courses/
 │       ├── controllers/
+│       │   └── course_list_controller.dart
 │       ├── data/
+│       │   ├── data_sources/
+│       │   │   └── course_remote_data_source.dart
+│       │   ├── models/
+│       │   │   ├── course_sessions_model.dart
+│       │   │   └── sessions_model.dart
+│       │   └── repositories/
+│       │       └── course_repository_impl.dart
 │       ├── domain/
+│       │   └── repositories/
+│       │       └── course_repository.dart
 │       └── presentation/
-│
+│           ├── screens/
+│           │   └── course_screen.dart
+│           └── widgets/
+│               ├── course_card.dart
+│               └── session_card.dart
+├── core/
+│   ├── bindings/
+│   │   └── controller_binder.dart
+│   ├── common/
+│   │   ├── styles/
+│   │   │   └── get_text_style.dart
+│   │   └── widgets/
+│   │       ├── custom_card.dart
+│   │       └── internet_banner_manager.dart
+│   ├── constants/
+│   │   ├── app_colors.dart
+│   │   ├── app_sizer.dart
+│   │   ├── app_texts.dart
+│   │   ├── app_urls.dart
+│   │   ├── enums.dart
+│   │   ├── icon_path.dart
+│   │   ├── image_path.dart
+│   │   └── logo_path.dart
+│   ├── di/
+│   │   └── dependency_injection.dart
+│   ├── errors/
+│   │   └── exceptions.dart
+│   ├── localization/
+│   │   └── app_localizations.dart
+│   ├── network/
+│   │   ├── interceptors/
+│   │   │   ├── global_error_interceptor.dart
+│   │   │   ├── http_error_interceptor.dart
+│   │   │   ├── internet_check_interceptor.dart
+│   │   │   └── token_refresh_interceptor.dart
+│   │   ├── api_client.dart
+│   │   ├── network_caller.dart
+│   │   ├── response_data.dart
+│   │   ├── result.dart
+│   │   └── server_exception.dart
+│   ├── services/
+│   │   ├── Auth_service.dart
+│   │   └── network_checker.dart
+│   └── utils/
+│       ├── device/
+│       │   └── device_utility.dart
+│       ├── formatters/
+│       │   └── app_formatters.dart
+│       ├── helpers/
+│       │   └── app_helper.dart
+│       ├── listener/
+│       │   └── connection_listener.dart
+│       ├── logging/
+│       │   ├── logger.dart
+│       │   └── loggerformain.dart
+│       ├── theme/
+│       │   ├── custom_themes/
+│       │   │   ├── app_bar_theme.dart
+│       │   │   ├── app_text_theme.dart
+│       │   │   ├── elevated_button_theme.dart
+│       │   │   └── text_field_theme.dart
+│       │   └── theme.dart
+│       └── validators/
+│           └── app_validator.dart
 ├── routes/
-│   └── app_routes.dart           # GetX named routes
-│
-├── app.dart                      # Root GetMaterialApp
-└── main.dart                     # Application entry point
+│   └── app_routes.dart
+├── app.dart
+└── main.dart
+```
